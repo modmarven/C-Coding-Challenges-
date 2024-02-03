@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class CheckManager : MonoBehaviour
+public class MovePlayer : MonoBehaviour
 {
     private float moveSpeed = 5.0f;
 
@@ -15,10 +14,10 @@ public class CheckManager : MonoBehaviour
     
     void Update()
     {
-        PlayerMove();
+        PlayerMovement();
     }
 
-    private void PlayerMove()
+    private void PlayerMovement()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -26,5 +25,4 @@ public class CheckManager : MonoBehaviour
         Vector2 movement = new Vector2(horizontal, vertical);
         transform.Translate(movement * moveSpeed * Time.deltaTime);
     }
-
 }
