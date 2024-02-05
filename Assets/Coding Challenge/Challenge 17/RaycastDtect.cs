@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaycastDetect : MonoBehaviour
+public class RaycastDtect : MonoBehaviour
 {
-    public Transform startRay;
-    public Transform endRay;
+    public Transform startPoint;
+    public Transform endPoint;
     public LayerMask layerMask;
-    public bool rayIn;
+    public bool inRay;
     public SpriteRenderer houseColour;
-
+    
     void Start()
     {
         
@@ -23,27 +23,27 @@ public class RaycastDetect : MonoBehaviour
 
     private void PlayerDetect()
     {
-        RaycastHit2D hit2D = Physics2D.Linecast(startRay.position, endRay.position, layerMask);
-        Debug.DrawLine(startRay.position, endRay.position, Color.red);
+        RaycastHit2D hit2D = Physics2D.Linecast(startPoint.position, endPoint.position, layerMask);
+        Debug.DrawLine(startPoint.position, endPoint.position, Color.green);
 
         if (hit2D.collider != null && hit2D.collider.gameObject.tag == "Player")
         {
-            if (!rayIn)
+            if (!inRay)
             {
                 Debug.Log("Player Entered");
-                rayIn = true;
+                inRay = true;
             }
         }
 
         else
         {
-            if (rayIn)
+            if (inRay)
             {
                 houseColour.material.color = Color.green;
                 Debug.Log("Player Exit");
-                rayIn = false;
+                inRay = false;
+                
             }
         }
     }
-
 }
